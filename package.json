@@ -1,0 +1,27 @@
+{
+  "name": "kode-weather",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Weather application",
+  "workspaces": [
+    "api",
+    "app"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run start --workspace=app",
+    "dev:api": "npm run dev --workspace=api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KodePrint/kode-weather.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KodePrint/kode-weather/issues"
+  },
+  "homepage": "https://github.com/KodePrint/kode-weather#readme"
+}
