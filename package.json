@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/KodePrint/kode-weather/issues"
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "homepage": "https://github.com/KodePrint/kode-weather#readme"
 }
