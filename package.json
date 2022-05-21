@@ -29,5 +29,30 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://github.com/KodePrint/kode-weather#readme"
+  "homepage": "https://github.com/KodePrint/kode-weather#readme",
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.6.2",
+    "sequelize-cli": "^6.4.1"
+  },
+  "dependencies": {
+    "@hapi/boom": "^10.0.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.6.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.19.2"
+  }
 }
