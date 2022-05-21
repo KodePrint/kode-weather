@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "NODE_ENV=development nodemon index.js",
     "lint": "npm run lint",
     "start": "NODE_ENV=production node index.js",
-    "test": "NODE_ENV=test jest --verbose"
+    "test": "NODE_ENV=test jest --verbose",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
   "author": "",

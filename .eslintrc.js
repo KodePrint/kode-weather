@@ -6,7 +6,8 @@ const RULES = {
 
 module.exports = {
   env: {
-    es2021: true
+    es2021: true,
+    jest: true
   },
   extends: [
     'plugin:react/recommended',

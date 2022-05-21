@@ -26,7 +26,9 @@ app.use(cors(option))
 app.get('/', (req, res) => {
   res.status(200).send('Hello World!')
 })
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server Express runing on port ${port}`)
   console.log('*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*')
 })
+
+module.exports = { app, server }
