@@ -1,6 +1,10 @@
-const express = require('express')
-const cors = require('cors')
-const { vars } = require('./configurations/vars.config')
+import express from 'express'
+import cors from 'cors'
+import { vars } from './configurations/vars.config.js'
+import { routeApi } from './routes/index.js'
+// const express = require('express')
+// const cors = require('cors')
+// const { vars } = require('./configurations/vars.config')
 
 // Settings API Withe-List
 const witheList = ['http://localhost:3000', 'http://localhost:5500']
@@ -22,13 +26,17 @@ const option = {
 }
 app.use(cors(option))
 
+// Routes
+routeApi(app)
+
 // Start the server
 app.get('/', (req, res) => {
   res.status(200).send('Hello World!')
 })
+
 const server = app.listen(port, () => {
   console.log(`Server Express runing on port ${port}`)
-  console.log('*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*')
+  console.log("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
 })
 
-module.exports = { app, server }
+export { app, server, port }
