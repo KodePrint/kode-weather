@@ -11,9 +11,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start --workspace=app",
-    "dev:api": "npm run dev --workspace=api",
-    "test:watch": "npm run test:watch --workspace=api",
-    "dev:test": "npm run test --workspace=api"
+    "api:dev": "npm run dev --workspace=api",
+    "api:watch": "npm run test:watch --workspace=api",
+    "api:test": "npm run test --workspace=api",
+    "api:migrations": "npm run migrations:generate --workspace=api",
+    "api:run:migrations": "npm run migrations:run --workspace=api"   
   },
   "repository": {
     "type": "git",

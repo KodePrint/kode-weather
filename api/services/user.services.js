@@ -1,6 +1,20 @@
 import bcrypt from 'bcryptjs'
 import boom from '@hapi/boom'
 
+
+const testUsers = [
+  {
+    id: 53,
+    email: 'uno@gmail.com',
+    name: 'Hola'
+  },
+  {
+    id: 1,
+    email: 'maria@gmail.com',
+    name: 'Maria'
+  }
+]
+
 export class UserServices {
   // Has Password
   hashPassword(password) {
@@ -10,17 +24,7 @@ export class UserServices {
 
   // GET ALL Users
   async getAll() {
-    const users = [
-      {
-        email: 'uno@gmail.com',
-        name: 'Hola'
-      },
-      {
-        email: 'maria@gmail.com',
-        name: 'Maria'
-      }
-    ]
-    return users
+    return testUsers
   }
 
   // CREATE One User
@@ -35,5 +39,24 @@ export class UserServices {
       throw boom.badRequest()
     }
     return user
+  }
+
+  // Update One User
+  async update(id, body) {
+    const index = testUsers.findIndex(
+      user => user.id == id
+    )
+    if (index === -1) {
+      throw boom.notFound()
+    }
+    const oldUser = testUsers[index]
+    if (body.password) {
+      body.password = await this.hashPassword(body.password)
+    }
+    const updateUser = {
+      id,
+      ...body
+    }
+    return updateUser
   }
 }

@@ -9,7 +9,11 @@
     "lint": "npm run lint",
     "start": " NODE_ENV=production node index.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose --silent",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "migrations:generate": "sequelize-cli migration:generate --name",
+    "migrations:run": "sequelize-cli db:migrate --debug",
+    "migrations:revert": "sequelize-cli db:migrate:undo",
+    "migrations:delete": "sequelize-cli db:migrate:undo:all"
   },
   "keywords": [],
   "author": "",

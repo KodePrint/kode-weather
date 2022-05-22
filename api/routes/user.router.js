@@ -1,5 +1,5 @@
 import express from 'express'
-import { createUserSchema } from '../schema/user.schema.js'
+import { createUserSchema, getUserSchema, updateUserSchema } from '../schema/user.schema.js'
 import { validatorHandler } from '../middlewares/validator.handler.js'
 import { UserServices } from '../services/user.services.js'
 
@@ -30,6 +30,23 @@ router.post(
       const { body } = req
       const user = await service.create(body)
       res.status(201).json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
+
+// PUT routes
+router.put(
+  '/:id',
+  validatorHandler(getUserSchema, 'params'),
+  validatorHandler(updateUserSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params
+      const { body } = req
+      const user = await service.update(id, body)
+      res.status(200).json(user)
     } catch (error) {
       next(error)
     }

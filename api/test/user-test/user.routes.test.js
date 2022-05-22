@@ -1,5 +1,11 @@
+import bcrypt from 'bcryptjs'
 import request from 'supertest'
 import { app, server } from '../../index'
+
+const hashPassword = (password) => {
+  const newPassword = bcrypt.hash(password, 10)
+  return newPassword
+}
 
 const testUser = {
   email: 'test@email.com',
@@ -31,7 +37,7 @@ describe('Test user routes', () => {
           expect(response.statusCode).toBe(201)
         }
       )
-      test('should have a content-type: application/json in header',
+      test('should have a content-type: application/json return object',
         async () => {
           const response = await request(app)
             .post('/api/v1/user')
@@ -39,25 +45,38 @@ describe('Test user routes', () => {
           expect(response.headers['content-type']).toEqual(
             expect.stringContaining('json')
           )
-        }
-      )
-      test('should respon with a json object contining a the new id',
-        async () => {
-          const response = await request(app)
-            .post('/api/v1/user')
-            .send(testUser)
           expect(response.body.id).toBeDefined()
         }
       )
-      test('shoild respond with a user has hashing a password',
+      test('should respond with a user has hashing a password',
         async () => {
           const response = await request(app)
             .post('/api/v1/user')
             .send(testUser)
-          expect(response.body.password).toMatch(testUser.password)
+          expect(response.body.password).not.toEqual(testUser.password)
         }
       )
     })
+  })
+  describe('PUT-PATCH /user', () => {
+
+    test('should update a user and respond with object',
+        async () => {
+          const response = await request(app)
+            .put('/api/v1/user/1')
+            .send({
+              email: 'another@gmail.com',
+              password: 'anotherPass123/-'
+            })
+          expect(response.statusCode).toBe(200)
+          expect(response.headers['content-type']).toEqual(
+            expect.stringContaining('json')
+          )
+          expect(response.body.id).toBeDefined()
+          expect(response.body.email).not.toEqual(testUser.email)
+          expect(response.body.password).not.toEqual(hashPassword('anotherPass123/-'))
+        }
+      )
   })
 
   // Stop Server for test
