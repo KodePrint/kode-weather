@@ -1,36 +1,39 @@
 import express from 'express'
+import { createUserSchema } from '../schema/user.schema.js'
+import { validatorHandler } from '../middlewares/validator.handler.js'
+import { UserServices } from '../services/user.services.js'
 
 // Create a router
 const router = express.Router()
+// create a service
+const service = new UserServices()
 
-
-// POST
-router.post('/', async (req, res) => {
-  try {
-    const {body} = req
-    res.status(201).json(body)
-  } catch (error) {
-    throw error
+// GET routes
+router.get(
+  '/',
+  async (req, res, next) => {
+    try {
+      const users = await service.getAll()
+      res.status(200).json(users)
+    } catch (error) {
+      next(error)
+    }
   }
-})
+)
 
-// GET
-router.get('/', async (req, res) => {
-  try {
-    await res.status(200).json({
-      message: 'Hello World!'
-    })
-  } catch (error) {
-    throw error
+// POST routes
+router.post(
+  '/',
+  validatorHandler(createUserSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const { body } = req
+      const user = await service.create(body)
+      res.status(201).json(user)
+    } catch (error) {
+      next(error)
+    }
   }
-})
-
-router.get('/:id', async (req, res) => {
-  try {
-    await res.status(200).json(body)
-  } catch (error) {
-    throw error
-  }
-})
+)
 
 export default router

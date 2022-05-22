@@ -2,9 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { vars } from './configurations/vars.config.js'
 import { routeApi } from './routes/index.js'
-// const express = require('express')
-// const cors = require('cors')
-// const { vars } = require('./configurations/vars.config')
+import { boomErrorHandler, errorHandler, logErrors, ormErrorHandler } from './middlewares/error.handler.js'
 
 // Settings API Withe-List
 const witheList = ['http://localhost:3000', 'http://localhost:5500']
@@ -29,6 +27,12 @@ app.use(cors(option))
 // Routes
 routeApi(app)
 
+// Middlewares
+app.use(logErrors)
+app.use(ormErrorHandler)
+app.use(boomErrorHandler)
+app.use(errorHandler)
+
 // Start the server
 app.get('/', (req, res) => {
   res.status(200).send('Hello World!')
@@ -36,7 +40,7 @@ app.get('/', (req, res) => {
 
 const server = app.listen(port, () => {
   console.log(`Server Express runing on port ${port}`)
-  console.log("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
+  console.log('*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*')
 })
 
 export { app, server, port }

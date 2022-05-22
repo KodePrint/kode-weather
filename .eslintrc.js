@@ -25,6 +25,7 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': RULES.OFF,
-    'react/prop-types': RULES.OFF
+    'react/prop-types': RULES.OFF,
+    'space-before-function-paren': RULES.OFF
   }
 }
