@@ -1,6 +1,6 @@
-import bcrypt from 'bcryptjs'
-import request from 'supertest'
-import { app, server } from '../../index'
+const bcrypt = require('bcryptjs')
+const request = require('supertest')
+const { app, server } = require('../../index')
 
 const hashPassword = (password) => {
   const newPassword = bcrypt.hash(password, 10)
@@ -61,22 +61,22 @@ describe('Test user routes', () => {
   describe('PUT-PATCH /user', () => {
 
     test('should update a user and respond with object',
-        async () => {
-          const response = await request(app)
-            .put('/api/v1/user/1')
-            .send({
-              email: 'another@gmail.com',
-              password: 'anotherPass123/-'
-            })
-          expect(response.statusCode).toBe(200)
-          expect(response.headers['content-type']).toEqual(
-            expect.stringContaining('json')
-          )
-          expect(response.body.id).toBeDefined()
-          expect(response.body.email).not.toEqual(testUser.email)
-          expect(response.body.password).not.toEqual(hashPassword('anotherPass123/-'))
-        }
-      )
+      async () => {
+        const response = await request(app)
+          .put('/api/v1/user/1')
+          .send({
+            email: 'another@gmail.com',
+            password: 'anotherPass123/-'
+          })
+        expect(response.statusCode).toBe(200)
+        expect(response.headers['content-type']).toEqual(
+          expect.stringContaining('json')
+        )
+        expect(response.body.id).toBeDefined()
+        expect(response.body.email).not.toEqual(testUser.email)
+        expect(response.body.password).not.toEqual(hashPassword('anotherPass123/-'))
+      }
+    )
   })
 
   // Stop Server for test

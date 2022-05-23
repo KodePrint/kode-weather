@@ -1,6 +1,6 @@
-import { Sequelize } from 'sequelize'
-import { vars } from '../../configurations/vars.config'
-import { setUpModels } from '../../database/models/index'
+const { Sequelize } = require('sequelize')
+const { vars } = require('../../configurations/vars.config')
+const setUpModels = require('../../database/models/index')
 
 const options = {
   dialect: 'postgres',
@@ -17,8 +17,12 @@ if (vars.isProd) {
   }
 }
 
-const sequelize = new Sequelize(
-  vars.isProd ? vars.postgresDbUri : vars.postgresDbUriTest, options
-)
-setUpModels(sequelize)
-export { sequelize }
+if (vars.isProd) {
+  const sequelize = new Sequelize(vars.postgresDbUri, options)
+  setUpModels(sequelize)
+  module.exports = sequelize
+} else {
+  const sequelize = new Sequelize(vars.postgresDbUriTest, options)
+  setUpModels(sequelize)
+  module.exports = sequelize
+}

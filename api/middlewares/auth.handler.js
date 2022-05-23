@@ -1,6 +1,8 @@
 // import boom from '@hapi/boom'
 // import { vars } from '../configurations/vars.config'
 
-export function chekApiKey(req, res, next) {
+const chekApiKey = (req, res, next) => {
   console.log('chekApiKey')
 }
+
+module.exports = { chekApiKey }

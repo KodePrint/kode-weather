@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   'config': './database/db.configuration.js',
   'models-path': './database/models/',

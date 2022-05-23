@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const vars = {
   // Server Port
   port: process.env.PORT || 3001,
@@ -7,4 +9,4 @@ const vars = {
   postgresDbUriTest: process.env.POSTGRES_DB_URI_TEST
 }
 
-export { vars }
+module.exports = { vars }

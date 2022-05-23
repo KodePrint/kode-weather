@@ -1,6 +1,6 @@
-import { vars } from '../configurations/vars.config'
+const { vars } = require('../configurations/vars.config')
 
-export const db = {
+module.exports = {
   development: {
     url: vars.postgresDbUriTest,
     dialect: 'postgres'

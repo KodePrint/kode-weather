@@ -1,4 +1,4 @@
-import Joi from 'joi'
+const Joi = require('joi')
 
 // user schema vars types
 const id = Joi.number()
@@ -32,4 +32,4 @@ const getUserSchema = Joi.object({
   id: id.required()
 })
 
-export { createUserSchema, updateUserSchema, getUserSchema }
+module.exports = { createUserSchema, updateUserSchema, getUserSchema }

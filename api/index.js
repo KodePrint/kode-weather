@@ -1,8 +1,8 @@
-import express from 'express'
-import cors from 'cors'
-import { vars } from './configurations/vars.config.js'
-import { routeApi } from './routes/index.js'
-import { boomErrorHandler, errorHandler, logErrors, ormErrorHandler } from './middlewares/error.handler.js'
+const express = require('express')
+const cors = require('cors')
+const { vars } = require('./configurations/vars.config')
+const routerApi = require('./routes')
+const { boomErrorHandler, errorHandler, logErrors, ormErrorHandler } = require('./middlewares/error.handler')
 
 // Settings API Withe-List
 const witheList = ['http://localhost:3000', 'http://localhost:5500']
@@ -25,7 +25,7 @@ const option = {
 app.use(cors(option))
 
 // Routes
-routeApi(app)
+routerApi(app)
 
 // Middlewares
 app.use(logErrors)
@@ -43,4 +43,4 @@ const server = app.listen(port, () => {
   console.log('*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*')
 })
 
-export { app, server, port }
+module.exports = { app, server, port }

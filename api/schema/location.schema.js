@@ -1,4 +1,4 @@
-import Joi from 'joi'
+const Joi = require('joi')
 
 // Location schema vars types
 const id = Joi.number()
@@ -30,4 +30,4 @@ const getLocationSchema = {
   id: id.required()
 }
 
-export { createLocationSchema, updateLocationSchema, getLocationSchema }
+module.exports = { createLocationSchema, updateLocationSchema, getLocationSchema }

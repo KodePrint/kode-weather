@@ -1,11 +1,11 @@
-import express from 'express'
-import { createUserSchema, getUserSchema, updateUserSchema } from '../schema/user.schema.js'
-import { validatorHandler } from '../middlewares/validator.handler.js'
-import { UserServices } from '../services/user.services.js'
+const express = require('express')
+// const passport = require('passport')
 
-// Create a router
+const validatorHandler = require('../middlewares/validator.handler')
+const UserServices = require('../services/user.services')
+const { createUserSchema, getUserSchema, updateUserSchema } = require('../schema/user.schema')
+
 const router = express.Router()
-// create a service
 const service = new UserServices()
 
 // GET routes
@@ -53,4 +53,4 @@ router.put(
   }
 )
 
-export default router
+module.exports = router

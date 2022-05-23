@@ -1,8 +1,8 @@
-import { Model, DataTypes, Sequelize } from 'sequelize'
+const { Model, DataTypes, Sequelize } = require('sequelize')
 
-export const USER_TABLE = 'Users'
+const USER_TABLE = 'users'
 
-export const UserSchema = {
+const UserSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -23,7 +23,7 @@ export const UserSchema = {
     min: 6
   },
   name: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.STRING,
     max: 75,
     set(value) {
@@ -60,8 +60,14 @@ export const UserSchema = {
   }
 }
 
-export class User extends Model {
-  static associate(models) {}
+class User extends Model {
+
+  static associate(models) {
+    this.hasMany(models.Location, {
+      as: 'locations',
+      foreignKey: 'userId'
+    })
+  }
 
   static config(sequelize) {
     return {
@@ -72,3 +78,5 @@ export class User extends Model {
     }
   }
 }
+
+module.exports = { USER_TABLE, UserSchema, User }

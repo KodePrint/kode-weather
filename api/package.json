@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "NODE_ENV=development nodemon index.js",
     "lint": "npm run lint",
@@ -11,7 +10,7 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose --silent",
     "test:watch": "npm run test -- --watch",
     "migrations:generate": "sequelize-cli migration:generate --name",
-    "migrations:run": "sequelize-cli db:migrate --debug",
+    "migrations:run": "sequelize-cli db:migrate",
     "migrations:revert": "sequelize-cli db:migrate:undo",
     "migrations:delete": "sequelize-cli db:migrate:undo:all"
   },
@@ -42,5 +41,8 @@
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.19.2"
+  },
+  "sequelize": {
+    "config": "./database/db.configuration.js"
   }
 }
