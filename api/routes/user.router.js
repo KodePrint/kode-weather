@@ -53,4 +53,20 @@ router.put(
   }
 )
 
+// DELETE Route
+router.delete(
+  '/:id',
+  validatorHandler(getUserSchema, 'params'),
+  validatorHandler(updateUserSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params
+      const user = await service.delete(id)
+      res.status(200).json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
+
 module.exports = router
