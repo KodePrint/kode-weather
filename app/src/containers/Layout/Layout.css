@@ -1,3 +1,7 @@
 .Layout {
-  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-left: .1rem solid #ccc;
+  border-right: .1rem solid #ccc;
+  min-height: 100vh;
 }

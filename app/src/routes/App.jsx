@@ -2,6 +2,7 @@ import './App.css'
 import { Route } from 'wouter'
 import Layout from '../containers/Layout/Layout'
 import Home from '../pages/Home/Home'
+import Display from '../pages/Display/Display'
 
 function App () {
   const apiKey = process.env.API_KEY
@@ -16,8 +17,6 @@ function App () {
   //   }
   // },[])
 
-  console.log(apiKey)
-
   // fetch('https://geolocation-db.com/json/')
   //   .then(response => response.json())
   //   .then(data => console.log(data))
@@ -27,6 +26,7 @@ function App () {
     <div className='App'>
       <Layout>
         <Route path="/" component={Home} />
+        <Route path="/location/:id" component={Display} />
       </Layout>
     </div>
     </>

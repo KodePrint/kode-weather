@@ -16,7 +16,7 @@
     "api:test": "npm run test --workspace=api",
     "api:migrations": "npm run migrations:generate --workspace=api",
     "api:run:migrations": "npm run migrations:run --workspace=api",
-    "api:undo:migrations": "npm run migrations:revert --workspace=api"   
+    "api:undo:migrations": "npm run migrations:revert --workspace=api"
   },
   "repository": {
     "type": "git",
@@ -46,6 +46,6 @@
     "supertest": "^6.2.3"
   },
   "jest": {
-    "testEnvironment": "node"	
+    "testEnvironment": "node"
   }
 }

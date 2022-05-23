@@ -6,7 +6,9 @@ const vars = {
   isProd: process.env.Node_Env === 'production',
   // Database Connection
   postgresDbUri: process.env.POSTGRES_DB_URI,
-  postgresDbUriTest: process.env.POSTGRES_DB_URI_TEST
+  postgresDbUriTest: process.env.POSTGRES_DB_URI_TEST,
+  // Ipinfo
+  ipInfoToken: process.env.IP_INFO_TOKEN
 }
 
 module.exports = { vars }
