@@ -30,6 +30,8 @@ module.exports = {
     'padded-blocks': RULES.OFF,
     'no-unused-vars': RULES.WARN,
     'eol-last': RULES.OFF,
-    'no-trailing-spaces': RULES.OFF
+    'no-trailing-spaces': RULES.OFF,
+    'object-curly-spacing': RULES.OFF,
+    camelcase: RULES.OFF
   }
 }

@@ -1,11 +1,48 @@
 .Location {
   box-shadow: 0 0 1rem rgba(0,0,0,.2);
-  border-radius: 1.2rem;
+  border-radius: 2rem;
   padding: 1.8rem;
+  margin: 4rem auto 2rem auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  color: var(--text-black);
 }
 .Location:hover {
   box-shadow: 0 0 1rem rgba(0,0,0,.35);
 }
+.Location__div {
+  position: relative;
+}
+.Location__div__img {
+  position: absolute;
+  height: 100%;
+}
+.Location__div__h3 {
+  font-size: 8rem;
+  font-weight: 300;
+  text-align: center;
+}
+.Location__div__p {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+.Location__div__span {
+  font-size: 1.4rem;
+}
+.condition {
+  display: flex;
+  align-items: flex-end;
+}
+.condition__p {
+  font-size: 1.8rem;
+  color: gray;
+  font-weight: 500;
+}
+.city {
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
+
 
 
 @media (min-width: 60rem) {

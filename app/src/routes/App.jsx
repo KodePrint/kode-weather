@@ -10,7 +10,7 @@ import Landing from '../pages/Landing/Landing'
 
 function App () {
 
-  const isLogin = false
+  const isLogin = true
 
   // useEffect(() => {
   //   if ('geolocation' in navigator) {

@@ -28,6 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--withe);
   min-height: 100vh;
+  color: var(--text-black);
 }
 
 code {
