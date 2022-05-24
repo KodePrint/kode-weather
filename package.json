@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/KodePrint/kode-weather#readme",
   "devDependencies": {
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "eslint": "^8.16.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",

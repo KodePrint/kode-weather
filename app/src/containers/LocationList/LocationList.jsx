@@ -1,5 +1,4 @@
 import './LocationList.css'
-import { useState } from 'react'
 import Location from '../../components/Location/Location'
 const LocationList = () => {
 

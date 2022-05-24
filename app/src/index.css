@@ -1,6 +1,14 @@
 :root {
   --max-width: min(100%, 120rem);
+  --text-black: #333;
+  --orange: #f99034;
+  --blue: #0074bd;
+  --mid-blue: #191363;
+  --sand: #e0d7c8e5;
+  --mint: #f7fff7;
+  --withe: #fdfdfd;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +26,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #fdfdfd;
+  background: var(--withe);
   min-height: 100vh;
 }
 

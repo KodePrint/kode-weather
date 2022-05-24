@@ -28,6 +28,8 @@ module.exports = {
     'react/prop-types': RULES.OFF,
     'space-before-function-paren': RULES.OFF,
     'padded-blocks': RULES.OFF,
-    'no-unused-vars': RULES.WARN
+    'no-unused-vars': RULES.WARN,
+    'eol-last': RULES.OFF,
+    'no-trailing-spaces': RULES.OFF
   }
 }

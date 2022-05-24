@@ -19,6 +19,7 @@ section {
 @media (min-width: 40rem) {
   .DisplayLocation {
     aspect-ratio: 8 / 16;
+    max-height: 100vh;
     min-height: auto;
   }
 }

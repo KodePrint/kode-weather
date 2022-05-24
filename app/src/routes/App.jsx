@@ -1,21 +1,26 @@
 import './App.css'
-import { Route } from 'wouter'
+// import { useEffect } from 'react'
+import { Route, Switch } from 'wouter'
+// import { env } from '../utils/vars.config'
 import Layout from '../containers/Layout/Layout'
 import Home from '../pages/Home/Home'
 import Display from '../pages/Display/Display'
+import NotFound from '../pages/NotFound/NotFound'
+import Landing from '../pages/Landing/Landing'
 
 function App () {
-  const apiKey = process.env.API_KEY
+
+  const isLogin = false
 
   // useEffect(() => {
-  //   if ("geolocation" in navigator) {
+  //   if ('geolocation' in navigator) {
   //     navigator.geolocation.getCurrentPosition(position => {
-  //       fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${apiKey}`)
+  //       fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${env.apiKey}`)
   //         .then(res => res.json())
   //         .then(data => console.log(data))
   //     })
   //   }
-  // },[])
+  // }, [])
 
   // fetch('https://geolocation-db.com/json/')
   //   .then(response => response.json())
@@ -25,8 +30,15 @@ function App () {
     <>
     <div className='App'>
       <Layout>
-        <Route path="/" component={Home} />
-        <Route path="/location/:id" component={Display} />
+        <Switch>
+          {
+            isLogin
+              ? <Route path="/" component={Home} />
+              : <Route path="/" component={Landing} />
+          }
+          <Route path="/location/:id" component={Display} />
+          <Route component={NotFound} />
+        </Switch>
       </Layout>
     </div>
     </>
