@@ -1,5 +1,5 @@
 import './LocationList.css'
-import Location from '../../components/Location/Location'
+import SmallCard from '../SmallCard/SmallCard'
 const LocationList = () => {
 
   const locations = []
@@ -13,7 +13,7 @@ const LocationList = () => {
       {
         locations.map(
           ({ key, temp }) => (
-            <Location key={key} id={key} temp={temp} />
+            <SmallCard key={key} id={key} temp={temp} />
           )
         )
       }

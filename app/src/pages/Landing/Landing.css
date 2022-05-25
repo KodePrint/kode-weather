@@ -1,5 +1,24 @@
 .Landing {
+}
+.Hero {
+  min-height: calc(100vh);
+  display: grid;
+  place-content: center;
+}
+.Hero__div__h1 {
+  margin-bottom: 1.2rem;
+  font-size: 3.5rem;
+}
+.Hero__div__img {
+  margin-right: 1rem;
+}
+.Hero__div__p {
+  margin-bottom: 3rem;
+}
 
+/* Footer */
+.Landing__footer {
+  display: none;
 }
 
 @media (min-width: 40rem) {
@@ -12,5 +31,16 @@
     grid-template-columns: repeat(2, 1fr);
     place-content: center;
     align-items: center;
+    gap: 10rem;
+    padding: 0;
+  }
+  .Hero__div {
+    padding: 2rem;
+    margin-bottom: 0;
+  }
+
+  /* Footer */
+  .Landing__footer {
+    display: block;
   }
 }

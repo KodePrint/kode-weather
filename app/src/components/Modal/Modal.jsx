@@ -1,3 +1,5 @@
+import './Modal.css'
+
 const Modal = ({children}) => {
 
   return (
