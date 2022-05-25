@@ -8,26 +8,11 @@ import Display from '../pages/Display/Display'
 import NotFound from '../pages/NotFound/NotFound'
 import Landing from '../pages/Landing/Landing'
 
-function App () {
+const App = () => {
 
-  const isLogin = true
-
-  // useEffect(() => {
-  //   if ('geolocation' in navigator) {
-  //     navigator.geolocation.getCurrentPosition(position => {
-  //       fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${env.apiKey}`)
-  //         .then(res => res.json())
-  //         .then(data => console.log(data))
-  //     })
-  //   }
-  // }, [])
-
-  // fetch('https://geolocation-db.com/json/')
-  //   .then(response => response.json())
-  //   .then(data => console.log(data))
+  const isLogin = false
 
   return (
-    <>
     <div className='App'>
       <Layout>
         <Switch>
@@ -41,7 +26,6 @@ function App () {
         </Switch>
       </Layout>
     </div>
-    </>
   )
 }
 

@@ -1,0 +1,16 @@
+.Landing {
+
+}
+
+@media (min-width: 40rem) {
+  .Landing {
+  }
+  .Hero {
+    width: 100%;
+    min-height: calc(100vh - 10rem);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-content: center;
+    align-items: center;
+  }
+}

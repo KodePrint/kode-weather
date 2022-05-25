@@ -1,5 +1,13 @@
+@font-face {
+  font-family: wheatericons-regullar;
+  src: url('./assets/fonts/weathericons-regular-webfont.woff'), format('woff'),
+    url('./assets/fonts/weathericons-regular-webfont.woff2'), format('woff2'),
+    url('./assets/fonts/weathericons-regular-webfont.svg'), format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
-  --max-width: min(100%, 120rem);
+  --max-width: min(100%, 100rem);
   --text-black: #333;
   --orange: #f99034;
   --blue: #0074bd;

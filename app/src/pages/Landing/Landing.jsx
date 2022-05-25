@@ -1,3 +1,4 @@
+import './Landing.css'
 import { useEffect, useState } from 'react'
 import Footer from '../../containers/Footer.jsx/Footer'
 import Location from '../../components/Location/Location'

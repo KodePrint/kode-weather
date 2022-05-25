@@ -5,7 +5,7 @@ const LocationList = () => {
   const locations = []
 
   for (let i = 0; i <= 5; i++) {
-    locations.push({ key: i, temp: '30°' })
+    locations.push({ key: i, temp: '30' })
   }
 
   return (
