@@ -1,7 +1,7 @@
 import { env } from '../utils/vars.config'
 
 export const getRealTime = ({ city = 'Guatemala', latitude = 0, longitude = 0 } = {}) => {
-
+  
   const options = {
     method: 'GET',
     headers: {
@@ -10,7 +10,7 @@ export const getRealTime = ({ city = 'Guatemala', latitude = 0, longitude = 0 } 
     }
   }
   
-  const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${city}`
+  const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}=7`
   
   return fetch(url, options)
     .then(response => response.json())
@@ -36,4 +36,4 @@ export const getRealTime = ({ city = 'Guatemala', latitude = 0, longitude = 0 } 
         windDir: wind_dir
       }
     })
-} 
+}

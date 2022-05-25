@@ -22,8 +22,8 @@ const Landing = () => {
             KodeWeather
           </h1>
           <p>Know the weather of your city and others</p>
-          <button className='Hero__button login__btn'>Login</button>
-          <button className='Hero__button signup__btn'>Signup</button>
+          <button className='Hero__button btn btn-primary'>Login</button>
+          <button className='Hero__button btn btn-secondary'>Signup</button>
         </div>
         <div className="Herro__div Example">
           <Location  

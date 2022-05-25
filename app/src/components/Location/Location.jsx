@@ -10,7 +10,8 @@ const Location = ({ id, city, temp, isDay, condition, icon, feelsLike }) => {
     <Link to={`/location/${id}`}>
       <div className="Location">
         <div className="Location__div condition">
-          <img className='Location__div__img' src={icon} alt="" />
+          {/* <img className='Location__div__img' src={icon} alt="" /> */}
+          <i className="wi wi-night-sleet"></i>
           <p className='Location__div__p condition__p'>{condition}</p>
         </div>
         <div className="Location__div">
