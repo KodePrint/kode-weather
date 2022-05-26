@@ -1,15 +1,23 @@
 import './Modal.css'
 
-const Modal = ({children}) => {
+const Modal = ({title, isOpen, closeModal, children}) => {
+  
+  console.log(isOpen)
 
   return (
-    <article className="Modal is-open">
+    <article className={`Modal ${isOpen && 'is-open'}`}>
       <div className="Modal__container">
-        <button className="close">
-          <i className="fa-solid fa-circle-xmark"></i>
-        </button>
+        <div className="Modal__title">
+          <h3>{title}</h3>
+          <button 
+            className="Modal__close-btn"
+            onClick={closeModal}
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
+        {children}
       </div>
-      {children}
     </article>
   )
 }

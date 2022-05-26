@@ -15,6 +15,12 @@
 .Hero__div__p {
   margin-bottom: 3rem;
 }
+.Landing__form {
+  width: 100%;
+}
+.search_city:hover {
+  color: var(--orange);
+}
 
 /* Footer */
 .Landing__footer {
@@ -31,7 +37,6 @@
     grid-template-columns: repeat(2, 1fr);
     place-content: center;
     align-items: center;
-    gap: 10rem;
     padding: 0;
   }
   .Hero__div {
@@ -42,5 +47,13 @@
   /* Footer */
   .Landing__footer {
     display: block;
+  }
+}
+
+@media (min-width: 80rem) {
+  .Landing {
+  }
+  .Hero {
+    gap: 10rem;
   }
 }

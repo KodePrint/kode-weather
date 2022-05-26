@@ -1,5 +1,5 @@
 import './Landing.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Footer from '../../containers/Footer.jsx/Footer'
 import SmallCard from '../../containers/SmallCard/SmallCard'
 import { getRealTime } from '../../services/get-real-time'
@@ -7,11 +7,20 @@ import { getRealTime } from '../../services/get-real-time'
 const Landing = () => {
 
   const [weather, setWeather] = useState({})
+  const [city, setCity] = useState('Guatemala')
+  const ref = useRef()
 
   useEffect(() => {
-    getRealTime({ city: 'Guatemala' })
+    getRealTime({ city })
       .then(res => setWeather(res))
-  }, [])
+  }, [city])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const data = new FormData(ref.current)
+    setCity(data.get('city'))
+    ref.current.reset()
+  }
 
   return (
     <div className='Landing'>
@@ -35,6 +44,26 @@ const Landing = () => {
             icon={weather.icon}
             feelsLike={weather.feelsLike}
           />
+
+          <form 
+            className='Landing__form' 
+            onSubmit={handleSubmit}
+            ref={ref}
+          >
+            <div className="input-group">
+              <input 
+                name='city'
+                className='input-group__input' 
+                type="text"
+                required
+                placeholder='Search your city'
+              />
+              <span className='input-group__span'></span>
+              <button className='input-group__btn search_city'>
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </form>
         </div>
       </section>
       <section className="Landing__footer">

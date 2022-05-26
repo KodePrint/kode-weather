@@ -7,8 +7,9 @@ const SmallCard = ({ id, city, temp, isDay, condition, icon, feelsLike, onclick 
   return (
         <article className="SmallCard">
           <div className="SmallCard__div condition">
-            <img className='SmallCard__div__img' src='' alt="" />
-            <i className="wi wi-night-sleet"></i>
+            <div className='SmallCard__div--icon'>
+              <img className='icon' src={icon} alt="" />
+            </div>
             <p className='SmallCard__div__p condition__p'>{condition}</p>
           </div>
           <div className="SmallCard__div">

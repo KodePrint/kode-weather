@@ -10,21 +10,22 @@ export const getRealTime = ({ city = 'Guatemala', latitude = 0, longitude = 0 } 
     }
   }
   
-  const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}=7`
+  const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=5`
   
   return fetch(url, options)
     .then(response => response.json())
     .then((res) => {
-      console.log(res)
       const { location, current } = res
       const { country, localtime, name} = location
       const { condition, humidity, feelslike_c, is_day, temp_c, wind_kph, wind_dir } = current
       const { code, text, icon } = condition
 
+      const newIcon = icon.replace(/64/g, '128')
+
       return {
         conditionCode: code,
         conditionText: text,
-        icon,
+        icon: newIcon,
         country,
         localtime,
         name,
