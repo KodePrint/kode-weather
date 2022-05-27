@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './routes/App'
-import Modals from './containers/Modals/Modals'
 import reportWebVitals from './reportWebVitals'
+import './assets/fonts/TitilliumWeb-Light.ttf'
+import './assets/fonts/TitilliumWeb-Regular.ttf'
+import './assets/fonts/TitilliumWeb-Bold.ttf'
 
-const modal = ReactDOM.createRoot(document.getElementById('modal'))
-// modal.render(<Modals />)
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>

@@ -32,6 +32,7 @@ module.exports = {
     'eol-last': RULES.OFF,
     'no-trailing-spaces': RULES.OFF,
     'object-curly-spacing': RULES.OFF,
-    camelcase: RULES.OFF
+    camelcase: RULES.OFF,
+    'no-undef': RULES.OFF
   }
 }

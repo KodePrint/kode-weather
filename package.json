@@ -48,5 +48,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1"
   }
 }

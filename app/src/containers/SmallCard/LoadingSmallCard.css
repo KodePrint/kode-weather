@@ -1,0 +1,127 @@
+.Loading {
+  border-radius: 2rem;
+  padding: 1.8rem;
+  margin: 4rem auto 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: var(--text-black);
+  background: rgba(107,237,224,.2);
+  box-shadow: 0 .4rem 3rem rgba(0,0,0,.2);
+  backdrop-filter: blur(.5rem);
+  --webkit-backdrop-filter: blur(.5rem);
+  border: .1px solid rgba(107,237,224,.3);
+  transition: .3s all ease;
+  position: relative;
+  grid-template-rows: 14rem;
+}
+.Loading:hover {
+  box-shadow: 0 .4rem 3rem rgba(0,0,0,.3);
+}
+.Loading__div {
+  position: relative;
+}
+.Loading__div__h3 {
+  font-size: clamp(7rem, 5vw, 10rem);
+  font-weight: 300;
+  text-align: right;
+  height: 7rem;
+  opacity: .6;
+  animation: gradient 3s ease infinite;
+  background: linear-gradient(-45deg, black, rgb(73, 69, 69), white, rgb(51, 48, 48), black);
+  background-size: 300% 300%;
+  transition: .3s all ease;
+  border-radius: .5rem;
+  margin-bottom: .5rem;
+}
+.Loading__div__p.feelslike {
+  text-align: right;
+  margin-right: 2.5rem;
+  font-size: clamp(1.1rem, 1vw, 1.6rem);
+}
+.Loading__div__p {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  width: 95%;
+  height: 1.4rem;
+  opacity: .6;
+  animation: gradient 3s ease infinite;
+  background: linear-gradient(-45deg, black, rgb(73, 69, 69), white, rgb(51, 48, 48), black);
+  background-size: 300% 300%;
+  transition: .3s all ease;
+  border-radius: .5rem;
+}
+.Loading__div__span {
+  display: block;
+  height: 1.4rem;
+  width: 95%;
+  border-radius: .5rem;
+  opacity: .6;
+  animation: gradient 3s ease infinite;
+  background: linear-gradient(-45deg, black, rgb(73, 69, 69), white, rgb(51, 48, 48), black);
+  background-size: 300% 300%;
+  transition: .3s all ease;
+}
+
+/* Icon and condition text */
+.condition {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+}
+.Loading__div--icon {
+  height: 8rem;
+  width: 22rem;
+  display: flex;
+  position: relative;
+  margin-bottom: 0;
+}
+.Loading__div--icon .icon {
+  display: block;
+  position: absolute;
+  content: '';
+  border-radius: .5rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,.3);
+  width: 95%;
+  opacity: .6;
+  animation: gradient 3s ease infinite;
+  background: linear-gradient(-45deg, black, rgb(73, 69, 69), white, rgb(51, 48, 48), black);
+  background-size: 300% 300%;
+  transition: .3s all ease;
+  height: 14rem;
+  bottom: 0;
+}
+.Loading__div__p.condition__p {
+  height: 1.8rem;
+  width: 95%;
+  border-radius: .5rem;
+  opacity: .6;
+  animation: gradient 3s ease infinite;
+  background: linear-gradient(-45deg, black, rgb(73, 69, 69), white, rgb(51, 48, 48), black);
+  background-size: 300% 100%;
+  transition: .3s all ease;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+
+/* City and date */
+.Loading__div__p.city {
+  height: 1.8rem;
+  width: 100%;
+  margin-bottom: .4rem;
+  opacity: .6;
+  animation: gradient 3s ease infinite;
+  background: linear-gradient(-45deg, black, rgb(73, 69, 69), white, rgb(51, 48, 48), black);
+  background-size: 300% 100%;
+  transition: .3s all ease;
+}
+
+@keyframes gradient {
+  0% {
+		background-position: 50% 0%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}

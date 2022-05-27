@@ -1,16 +1,19 @@
-.Landing {
-}
 .Hero {
   min-height: calc(100vh);
   display: grid;
   place-content: center;
 }
+.Hero__div {
+  max-width: 45rem;
+}
 .Hero__div__h1 {
   margin-bottom: 1.2rem;
   font-size: 3.5rem;
+  display: flex;
+  align-items: center;
 }
 .Hero__div__img {
-  margin-right: 1rem;
+  max-height: 8rem;
 }
 .Hero__div__p {
   margin-bottom: 3rem;

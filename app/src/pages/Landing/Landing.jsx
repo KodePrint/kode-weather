@@ -1,18 +1,25 @@
 import './Landing.css'
+import logo from '../../assets/icons/Icon.png'
 import { useEffect, useState, useRef } from 'react'
 import Footer from '../../containers/Footer.jsx/Footer'
 import SmallCard from '../../containers/SmallCard/SmallCard'
+import LoadingSmallCard from '../../containers/SmallCard/LoadingSmallCard'
 import { getRealTime } from '../../services/get-real-time'
 
 const Landing = () => {
 
   const [weather, setWeather] = useState({})
   const [city, setCity] = useState('Guatemala')
+  const [isLoading, setIsLoading] = useState(true)
   const ref = useRef()
 
   useEffect(() => {
+    setIsLoading(true)
     getRealTime({ city })
-      .then(res => setWeather(res))
+      .then(res => {
+        setWeather(res)
+        setIsLoading(false)
+      })
   }, [city])
 
   const handleSubmit = (e) => {
@@ -27,7 +34,7 @@ const Landing = () => {
       <section className="Hero">
         <div className="Hero__div Login">
           <h1 className='Hero__div__h1'>
-            <img className='Hero__div__img' src="" alt="Logo" />
+            <img className='Hero__div__img' src={logo} alt="Logo" />
             KodeWeather
           </h1>
           <p className='Hero__div__p'>Know the weather of your city and others</p>
@@ -35,16 +42,20 @@ const Landing = () => {
           <button className='Hero__button btn btn-secondary'>Signup</button>
         </div>
         <div className="Hero__div Example">
-          <SmallCard  
-            className='Example'
-            city={weather.name}
-            temp={weather.temperature}
-            isDay={weather.idDay}
-            condition={weather.conditionText}
-            icon={weather.icon}
-            feelsLike={weather.feelsLike}
-          />
-
+          {/* <LoadingSmallCard /> */}
+          {
+            isLoading 
+              ? <LoadingSmallCard/> 
+              : <SmallCard  
+                  className='Example'
+                  city={weather.name}
+                  temp={weather.temperature}
+                  isDay={weather.idDay}
+                  condition={weather.conditionText}
+                  icon={weather.icon}
+                  feelsLike={weather.feelsLike}
+                />
+          }
           <form 
             className='Landing__form' 
             onSubmit={handleSubmit}

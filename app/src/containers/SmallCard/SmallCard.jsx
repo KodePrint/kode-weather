@@ -1,3 +1,6 @@
+import PartyCloud from '../../components/IconsComponets/partyCloud/PartyCloud'
+import 'animate.css'
+
 import './SmallCard.css'
 const SmallCard = ({ id, city, temp, isDay, condition, icon, feelsLike, onclick }) => {
 
@@ -7,18 +10,18 @@ const SmallCard = ({ id, city, temp, isDay, condition, icon, feelsLike, onclick 
   return (
         <article className="SmallCard">
           <div className="SmallCard__div condition">
-            <div className='SmallCard__div--icon'>
-              <img className='icon' src={icon} alt="" />
+            <div className='SmallCard__div--icon animate__animated animate__fadeIn'>
+              {icon}
             </div>
-            <p className='SmallCard__div__p condition__p'>{condition}</p>
+            <p className='SmallCard__div__p condition__p animate__animated animate__fadeIn'>{condition}</p>
           </div>
           <div className="SmallCard__div">
-            <h3 className='SmallCard__div__h3'>{ temp }°</h3>
-            <p className='SmallCard__div__p feelslike'>Feelslike {feelsLike}°</p>
+            <h3 className='SmallCard__div__h3 animate__animated animate__fadeIn'>{ temp }°</h3>
+            <p className='SmallCard__div__p feelslike animate__animated animate__fadeIn'>Feelslike {feelsLike}°</p>
           </div>
           <div className="SmallCard__div city">
-            <p className='SmallCard__div__p city'>{city}</p>
-            <span className='SmallCard__div__span'>{today}</span>
+            <p className='SmallCard__div__p city animate__animated animate__fadeIn'>{city}</p>
+            <span className='SmallCard__div__span animate__animated animate__fadeIn'>{today}</span>
           </div>
         </article>
   )

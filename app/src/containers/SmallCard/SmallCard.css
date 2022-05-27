@@ -12,16 +12,15 @@
   border: .1px solid rgba(107,237,224,.3);
   transition: .3s all ease;
   position: relative;
+  grid-template-rows: 14rem;
+  max-width: min(100%, 45rem);
+  gap: 1rem;
 }
 .SmallCard:hover {
   box-shadow: 0 .4rem 3rem rgba(0,0,0,.3);
 }
 .SmallCard__div {
   position: relative;
-}
-.SmallCard__div__img {
-  position: absolute;
-  height: 100%;
 }
 .SmallCard__div__h3 {
   font-size: clamp(7rem, 5vw, 10rem);
@@ -31,6 +30,7 @@
 .SmallCard__div__p.feelslike {
   text-align: right;
   margin-right: 2.5rem;
+  font-size: clamp(1.1rem, 1vw, 1.6rem);
 }
 .SmallCard__div__p {
   font-size: 1.4rem;
@@ -48,19 +48,13 @@
   position: relative;
 }
 .SmallCard__div--icon {
-  height: 5rem;
+  height: 6rem;
   width: 100%;
+  max-width: 22rem;
   display: flex;
-  background: rgba(0,0,0,.1);
   position: relative;
   margin-bottom: 0;
 }
-.SmallCard__div--icon img {
-  position: absolute;
-  width: calc(100%);
-  bottom: -.5rem;
-}
-
 .condition__p {
   font-size: 1.8rem;
   color: gray;
