@@ -6,6 +6,7 @@ const email = Joi.string().email()
 const name = Joi.string()
 const image = Joi.string()
 const password = Joi.string()
+const isLocal = Joi.boolean()
 const isActive = Joi.boolean()
 const isAdmin = Joi.boolean()
 
@@ -14,7 +15,8 @@ const createUserSchema = Joi.object({
   email: email.required(),
   password: password.required(),
   name: name.optional(),
-  image: image.optional()
+  image: image.optional(),
+  isLocal: isLocal.required()
 })
 
 // Update User Scheme
@@ -31,5 +33,8 @@ const updateUserSchema = Joi.object({
 const getUserSchema = Joi.object({
   id: id.required()
 })
+const getByEmailUserSchema = Joi.object({
+  email: email.optional()
+})
 
-module.exports = { createUserSchema, updateUserSchema, getUserSchema }
+module.exports = { createUserSchema, updateUserSchema, getUserSchema, getByEmailUserSchema }

@@ -22,6 +22,16 @@ const UserSchema = {
     type: DataTypes.STRING,
     min: 6
   },
+  tokenReset: {
+    allowNull: true,
+    type: DataTypes.STRING,
+    field: 'token_reset'
+  },
+  tokenRefresh: {
+    allowNull: true,
+    type: DataTypes.STRING,
+    field: 'token_refresh'
+  },
   name: {
     allowNull: true,
     type: DataTypes.STRING,
@@ -34,6 +44,12 @@ const UserSchema = {
     allowNull: true,
     type: DataTypes.STRING,
     max: 255
+  },
+  isLocal: {
+    allowNull: false,
+    type: DataTypes.BOOLEAN,
+    field: 'is_local',
+    defaultValue: true
   },
   isActive: {
     allowNull: false,
