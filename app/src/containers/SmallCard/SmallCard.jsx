@@ -1,4 +1,3 @@
-import PartyCloud from '../../components/IconsComponets/partyCloud/PartyCloud'
 import 'animate.css'
 
 import './SmallCard.css'
