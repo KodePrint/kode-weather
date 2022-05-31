@@ -24,6 +24,9 @@ const option = {
 }
 app.use(cors(option))
 
+// Strategies
+require('./libs/passport')
+
 // Routes
 routerApi(app)
 
