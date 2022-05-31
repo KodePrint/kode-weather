@@ -32,7 +32,7 @@ router.get(
 // by PK
 router.get(
   '/:id',
-  validatorHandler(getByEmailUserSchema, 'query'),
+  validatorHandler(getByEmailUserSchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params

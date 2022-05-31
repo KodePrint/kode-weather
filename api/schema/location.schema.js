@@ -2,8 +2,8 @@ const Joi = require('joi')
 
 // Location schema vars types
 const id = Joi.number()
-const latitude = Joi.number()
-const longitude = Joi.number()
+const latitude = Joi.string()
+const longitude = Joi.string()
 const city = Joi.string()
 const country = Joi.string()
 const userId = Joi.number()
@@ -27,10 +27,11 @@ const updateLocationSchema = Joi.object({
 
 // Get Location Scheme
 const getLocationSchema = Joi.object({
-  id: id.required(),
-  latitude: latitude.optional(),
-  longitude: longitude.optional(),
-  city: city.optional()
+  id: id.required()
 })
 
-module.exports = { createLocationSchema, updateLocationSchema, getLocationSchema }
+const getLocationsByUser = Joi.object({
+  userId: userId.optional()
+})
+
+module.exports = { createLocationSchema, updateLocationSchema, getLocationSchema, getLocationsByUser }

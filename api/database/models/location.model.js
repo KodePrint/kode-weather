@@ -13,7 +13,7 @@ const LocationSchema = {
   country: {
     allowNull: false,
     type: DataTypes.STRING,
-    unique: true,
+    unique: false,
     set(value) {
       this.setDataValue('country', value.toLowerCase())
     }
@@ -21,7 +21,7 @@ const LocationSchema = {
   city: {
     allowNull: false,
     type: DataTypes.STRING,
-    unique: true,
+    unique: false,
     set(value) {
       this.setDataValue('city', value.toLowerCase())
     }
@@ -29,17 +29,17 @@ const LocationSchema = {
   latitude: {
     allowNull: false,
     type: DataTypes.STRING,
-    unique: true,
+    unique: false,
     set(value) {
       this.setDataValue('latitude', value.toLowerCase())
     }
   },
-  logitude: {
+  longitude: {
     allowNull: false,
     type: DataTypes.STRING,
-    unique: true,
+    unique: false,
     set(value) {
-      this.setDataValue('logitude', value.toLowerCase())
+      this.setDataValue('longitude', value.toLowerCase())
     }
   },
   userId: {

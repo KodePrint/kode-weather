@@ -1,20 +1,28 @@
 const express = require('express')
 const passport = require('passport')
 const validatorHandler = require('../middlewares/validator.handler')
-// const UserServices = require('../services/user.services')
-const { createLocationSchema, getLocationSchema } = require('../schema/location.schema')
+const LocationServices = require('../services/location.services')
+const { createLocationSchema, getLocationSchema, getLocationsByUser } = require('../schema/location.schema')
 
 const router = express.Router()
-// const service = new UserServices()
+const service = new LocationServices()
 
 // GET routes
 
 // All
 router.get(
   '/',
+  passport.authenticate('jwt', { session: false }),
+  validatorHandler(getLocationsByUser, 'query'),
   async (req, res, next) => {
     try {
-      res.status(200).json([{ location: 1 }, { location: 2 }])
+      if (req.query.userId) {
+        const location = await service.getByUser(req.query.userId)
+        res.status(200).json(location)
+      } else {
+        const locations = await service.getAll()
+        res.status(200).json(locations)
+      }
     } catch (error) {
       next(error)
     }
@@ -24,11 +32,13 @@ router.get(
 // by PK
 router.get(
   '/:id',
-  validatorHandler(getLocationSchema, 'query'),
+  passport.authenticate('jwt', { session: false }),
+  validatorHandler(getLocationSchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params
-      res.status(200).json({ location: id })
+      const location = await service.getOne(id)
+      res.status(200).json(location)
     } catch (error) {
       next(error)
     }
@@ -38,10 +48,13 @@ router.get(
 // POST routes
 router.post(
   '/',
+  passport.authenticate('jwt', { session: false }),
   validatorHandler(createLocationSchema, 'body'),
   async (req, res, next) => {
     try {
-      res.status(201).json(req.body)
+      const { body } = req
+      const location = await service.create(body)
+      res.status(201).json(location)
     } catch (error) {
       next(error)
     }
@@ -51,11 +64,13 @@ router.post(
 // DELETE Route
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
   validatorHandler(getLocationSchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params
-      res.status(200).json(`Location is Delete with id: ${id}`)
+      const location = await service.delete(id)
+      res.status(200).json(location)
     } catch (error) {
       next(error)
     }
