@@ -6,6 +6,12 @@ import reportWebVitals from './reportWebVitals'
 import './assets/fonts/TitilliumWeb-Light.ttf'
 import './assets/fonts/TitilliumWeb-Regular.ttf'
 import './assets/fonts/TitilliumWeb-Bold.ttf'
+import Modal from './containers/Modal/Modal'
+
+// const modals = ReactDOM.createRoot(document.getElementById('modal'))
+// modals.render(
+//   <Modal />
+// )
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

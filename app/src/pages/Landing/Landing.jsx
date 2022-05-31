@@ -1,25 +1,46 @@
-import './Landing.css'
+import { useEffect, useState, useRef, useContext } from 'react'
+import { Link } from 'wouter'
+// Load Custom Hooks
+import { getRealTime } from '../../services/get-real-time'
+// Load Components
 import logo from '../../assets/icons/Icon.png'
-import { useEffect, useState, useRef } from 'react'
 import Footer from '../../containers/Footer.jsx/Footer'
 import SmallCard from '../../containers/SmallCard/SmallCard'
 import LoadingSmallCard from '../../containers/SmallCard/LoadingSmallCard'
-import { getRealTime } from '../../services/get-real-time'
+import AppContext from '../../context/App.context'
+import Modal from '../../containers/Modal/Modal'
+// Load CSS
+import './Landing.css'
 
 const Landing = () => {
 
+  const { state } = useContext(AppContext)
   const [weather, setWeather] = useState({})
+  const [latitude, setLatitude] = useState()
+  const [longitude, setLongitude] = useState()
   const [city, setCity] = useState('Guatemala')
   const [isLoading, setIsLoading] = useState(true)
   const ref = useRef()
 
   useEffect(() => {
     setIsLoading(true)
-    getRealTime({ city })
-      .then(res => {
-        setWeather(res)
-        setIsLoading(false)
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(async position => {
+        await setLatitude(position.coords.latitude)
+        await setLongitude(position.coords.longitude)
+        getRealTime({ latitude, longitude })
+          .then(res => {
+            setWeather(res)
+            setIsLoading(false)
+          })
       })
+    } else {
+      getRealTime({ city })
+        .then(res => {
+          setWeather(res)
+          setIsLoading(false)
+        })
+    }
   }, [city])
 
   const handleSubmit = (e) => {
@@ -31,6 +52,7 @@ const Landing = () => {
 
   return (
     <div className='Landing'>
+      { !state.closeInitialModal && <Modal></Modal> }
       <section className="Hero">
         <div className="Hero__div Login">
           <h1 className='Hero__div__h1'>
@@ -38,7 +60,7 @@ const Landing = () => {
             KodeWeather
           </h1>
           <p className='Hero__div__p'>Know the weather of your city and others</p>
-          <button className='Hero__button btn btn-primary'>Login</button>
+          <Link to='/login' className='Hero__button btn btn-primary'>Login</Link>
           <button className='Hero__button btn btn-secondary'>Signup</button>
         </div>
         <div className="Hero__div Example">

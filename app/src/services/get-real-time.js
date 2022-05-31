@@ -2,6 +2,17 @@ import { env } from '../utils/vars.config'
 import { myIcon } from './get-icon'
 import Icon113 from '../components/IconsComponets/Icon113/Icon113'
 
+const getUrl = (data) => {
+  const { latitude } = data
+  const { longitude } = data
+  const { city } = data
+  if (latitude !== 0) {
+    return `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${latitude},${longitude}&days=5`
+  } else { 
+    return `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=5`
+  }
+}
+
 export const getRealTime = ({ city = 'Guatemala', latitude = 0, longitude = 0 } = {}) => {
   
   const options = {
@@ -11,14 +22,14 @@ export const getRealTime = ({ city = 'Guatemala', latitude = 0, longitude = 0 } 
       'X-RapidAPI-Key': env.weatherKey
     }
   }
-  
-  const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=5`
+  const url = getUrl({city, latitude, longitude})
+  console.log(url)
   
   return fetch(url, options)
     .then(response => response.json())
     .then((res) => {
       const { location, current } = res
-      const { country, localtime, name} = location
+      const { country, localtime, region} = location
       const { condition, humidity, feelslike_c, is_day, temp_c, wind_kph, wind_dir } = current
       const { code, text, icon } = condition
 
@@ -32,7 +43,7 @@ export const getRealTime = ({ city = 'Guatemala', latitude = 0, longitude = 0 } 
         icon: newIcon,
         country,
         localtime,
-        name,
+        name: region,
         humidity,
         isDay: is_day,
         feelsLike: feelslike_c,
