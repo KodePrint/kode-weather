@@ -7,6 +7,8 @@ const LocalStrategy = require('./strategies/local.strategy')
 const GithubStrategy = require('./strategies/github.strategy')
 // Google Strategy
 const GoogleStrategy = require('./strategies/google.strategy')
+const UserServices = require('../../services/user.services')
+const service = new UserServices()
 
 passport.serializeUser(
   (user, done) => {
@@ -14,12 +16,10 @@ passport.serializeUser(
   }
 )
 
-// passport.deserializeUser((id, done) => {
-//     user.findById(id, (err, user) => {
-//       done(err, user)
-//     })
-//   }
-// )
+passport.deserializeUser(async (id, done) => {
+  const user = await service.getOne(id)
+  done(null, user)
+})
 
 passport.use(GithubStrategy)
 passport.use(GoogleStrategy)

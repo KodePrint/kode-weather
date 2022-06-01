@@ -15,7 +15,7 @@ router.get(
 router.get(
   '/good',
   (req, res, next) => {
-    console.log(req.user)
+    console.log(req)
     res.send('Hello')
   }
 )
@@ -39,6 +39,7 @@ router.get(
       const { user } = req
       const accessToken = await service.accessToken(user)
       const refreshToken = await service.refreshToken(user)
+      res.cookie({ user, accessToken, refreshToken })
       res.redirect('http://localhost:3000')
     } catch (error) {
       next(error)
@@ -56,7 +57,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     session: false,
-    failureRedirect: '/api/v1/auth/failed'
+    failureRedirect: '/api/v1/auth/login'
   }),
   async (req, res, next) => {
     try {
