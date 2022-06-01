@@ -1,6 +1,9 @@
 import { useEffect, useState, useRef, useContext } from 'react'
 import { Link } from 'wouter'
+// Services
+import { getUser } from '../../services/getUser'
 // Load Custom Hooks
+import { useUser } from '../../hooks/useUser'
 import { getRealTime } from '../../services/get-real-time'
 // Load Components
 import logo from '../../assets/icons/Icon.png'
@@ -14,13 +17,29 @@ import './Landing.css'
 
 const Landing = () => {
 
+  useEffect(() => {
+    // getUser().then(user => console.log('User: ', user))
+  }, [])
+
+  // Contexts
   const { state } = useContext(AppContext)
+
+  const navigate = (to) => (window.location.hash = to)
+
+  const { isLogged, login } = useUser()
+
   const [weather, setWeather] = useState({})
   const [latitude, setLatitude] = useState()
   const [longitude, setLongitude] = useState()
   const [city, setCity] = useState('Guatemala')
   const [isLoading, setIsLoading] = useState(true)
   const ref = useRef()
+
+  useEffect(() => {
+    if (isLogged) {
+      navigate('/')
+    }
+  }, [isLogged])
 
   useEffect(() => {
     setIsLoading(true)

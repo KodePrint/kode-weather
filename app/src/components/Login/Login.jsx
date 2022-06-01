@@ -1,9 +1,13 @@
 import { Link } from 'wouter'
+import Google from '../../assets/images/google-icon.svg'
+import Github from '../../assets/images/github-icon.svg'
+import { authWith } from '../../services/auth'
 
 const Login = ({innerRef, submit}) => {
   
   const handleAuth = (e) => {
-    console.log(e)
+    const option = e.target.attributes['data-login'].value
+    authWith(option)
   }
   return (
     <>
@@ -29,7 +33,7 @@ const Login = ({innerRef, submit}) => {
         </figure>
         Continue with Github
       </button>
-      <div className="input-group email">
+      <div className="input-group__container">
         <input 
           className='email' 
           type="email" 
@@ -38,9 +42,9 @@ const Login = ({innerRef, submit}) => {
           autoComplete='off'
           required 
         />
-        <i className="fas fa-user"></i>
+        <span><i className="fas fa-user"></i></span>
       </div>
-      <div className="input-group password">
+      <div className="input-group__container">
         <input
           className='password'
           type="password" 
@@ -49,7 +53,7 @@ const Login = ({innerRef, submit}) => {
           autoComplete='off'
           required 
         />
-        <i className="fas fa-lock-alt"></i>
+        <span><i className="fas fa-lock-alt"></i></span>
       </div>
       <button
         onClick={submit}

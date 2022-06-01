@@ -1,5 +1,5 @@
 import './App.css'
-// import { useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Route, Switch } from 'wouter'
 // import { env } from '../utils/vars.config'
 import Layout from '../containers/Layout/Layout'
@@ -8,6 +8,9 @@ import Display from '../pages/Display/Display'
 import NotFound from '../pages/NotFound/NotFound'
 import Landing from '../pages/Landing/Landing'
 import LoginPage from '../pages/LoginPage/LoginPage'
+
+import { useUser } from '../hooks/useUser'
+
 // Import Context
 import useInitialState from '../hooks/useInitialState'
 import AppContext from '../context/App.context'
@@ -15,7 +18,7 @@ import AppContext from '../context/App.context'
 const App = () => {
   const initialState = useInitialState()
 
-  const isLogin = false
+  const { isLogged, login } = useUser()
 
   return (
     <AppContext.Provider value={initialState}>
@@ -23,7 +26,7 @@ const App = () => {
         <Layout>
           <Switch>
             {
-              isLogin
+              isLogged
                 ? <Route path="/" component={Home} />
                 : <Route path="/" component={Landing} />
             }

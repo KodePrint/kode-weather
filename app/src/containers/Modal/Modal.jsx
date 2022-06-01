@@ -6,7 +6,7 @@ import { useModal } from '../../hooks/useModal'
 
 const Modal = () => {
   const [initialOpen, openInitial, closeinitial] = useModal(true)
-  const { state, closeModal } = useContext(AppContext)
+  const { closeModal } = useContext(AppContext)
   
   if (!initialOpen) {
     closeModal()

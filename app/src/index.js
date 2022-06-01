@@ -8,6 +8,7 @@ import './assets/fonts/TitilliumWeb-Regular.ttf'
 import './assets/fonts/TitilliumWeb-Bold.ttf'
 import Modal from './containers/Modal/Modal'
 
+import { UserContextProvider } from './context/UserContext'
 // const modals = ReactDOM.createRoot(document.getElementById('modal'))
 // modals.render(
 //   <Modal />
@@ -16,7 +17,9 @@ import Modal from './containers/Modal/Modal'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
+    <UserContextProvider>
     <App />
+    </UserContextProvider>
   </React.StrictMode>
 )
 

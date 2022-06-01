@@ -89,6 +89,26 @@ code {
   background: var(--blue);
   color: var(--mint);
 }
+.btn-login-with {
+  height: 4.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: .2rem solid var(--blue);
+  border-radius: .5rem;
+  transition: .3s all ease;
+  margin-bottom: 1rem;
+  color: rgba(0,0,0,.5);
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 0 .5rem rgba(0,0,0,.5);
+}
+.btn-login-with figure {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  padding: .8rem;
+}
 .input-group {
   display: flex;
   width: 100%;
@@ -132,9 +152,23 @@ code {
   right: 1rem;
   font-size: 1.8rem;
 }
+.input-group__container {
+  display: flex;
+  width: 100%;
+  height: 4.5rem;
+  align-items: center;
+  border: .1rem solid var(--blue);
+  margin-bottom: 1rem;
+  border-radius: .5rem;
+  transition: .3s all ease;
+  position: relative;
+}
+.input-group__container:focus {
+  border-color: var(--mid-blue);
+}
 
 @media (min-width: 60rem) {
   .btn {
-    max-width: 30rem;
+    max-width: 40rem;
   }
 }

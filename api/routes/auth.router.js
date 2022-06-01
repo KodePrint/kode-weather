@@ -14,10 +14,9 @@ router.get(
 
 router.get(
   '/good',
-  // passport.authenticate('jwt', { session: false }),
   (req, res, next) => {
     console.log(req.user)
-    res.send(`Welcome ${req.user}`)
+    res.send('Hello')
   }
 )
 
@@ -31,16 +30,16 @@ router.get(
 router.get(
   '/github/callback',
   passport.authenticate('github', {
-    session: false, failureRedirect: '/api/v1/auth/failed'
+    session: false,
+    successRedirect: '/api/v1/auth/good',
+    failureRedirect: '/api/v1/auth/failed'
   }),
   async (req, res, next) => {
     try {
       const { user } = req
       const accessToken = await service.accessToken(user)
       const refreshToken = await service.refreshToken(user)
-      res.status(200).json(
-        { user, accessToken, refreshToken }
-      )
+      res.redirect('http://localhost:3000')
     } catch (error) {
       next(error)
     }
@@ -56,16 +55,15 @@ router.get(
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    session: false, failureRedirect: '/api/v1/auth/failed'
+    session: false,
+    failureRedirect: '/api/v1/auth/failed'
   }),
   async (req, res, next) => {
     try {
       const { user } = req
       const accessToken = await service.accessToken(user)
       const refreshToken = await service.refreshToken(user)
-      res.status(200).json(
-        { user, accessToken, refreshToken }
-      )
+      res.redirect('http://localhost:3000')
     } catch (error) {
       next(error)
     }

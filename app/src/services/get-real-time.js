@@ -1,6 +1,4 @@
 import { env } from '../utils/vars.config'
-import { myIcon } from './get-icon'
-import Icon113 from '../components/IconsComponets/Icon113/Icon113'
 
 const getUrl = (data) => {
   const { latitude } = data
@@ -35,12 +33,11 @@ export const getRealTime = ({ city = 'Guatemala', latitude = 0, longitude = 0 } 
 
       // const iconCode = parseInt(icon.slice(-7, -4))
       // const newIcon = myIcon({ number: iconCode, isDay: is_day})
-      const newIcon = (<Icon113 />)
 
       return {
         conditionCode: code,
         conditionText: text,
-        icon: newIcon,
+        icon,
         country,
         localtime,
         name: region,

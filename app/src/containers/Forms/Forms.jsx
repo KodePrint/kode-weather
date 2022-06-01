@@ -1,6 +1,6 @@
 const Forms = ({children, className, innerRef}) => {
   return (
-    <form ref={innerRef} className={`${className}`}>
+    <form ref={innerRef} className={`form ${className}`}>
       {children}
     </form>
   )
