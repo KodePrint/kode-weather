@@ -4,7 +4,8 @@
 .Landing__header {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 3.2rem;
+  margin-bottom: 3.2rem;
 }
 
 .Landing__header__h1 {
@@ -17,3 +18,10 @@
   margin-right: .4rem;
 }
 
+.Landing__header__btns {
+  display: flex;
+  flex-direction: column;
+}
+.btn-login {
+  margin-bottom: 1.6rem;
+}

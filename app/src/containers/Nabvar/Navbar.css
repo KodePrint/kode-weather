@@ -1,0 +1,60 @@
+.Navbar {
+  width: 100vw;
+  overflow: hidden;
+}
+.Navbar__container {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: .5rem 2rem;
+  height: 7rem;
+  background: var(--dark-blue);
+  z-index: 25;
+}
+
+.Navbar__ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.Navbar__btn {
+  border: none;
+  background: transparent;
+  color: var(--white);
+  font-size: var(--font-xxl);
+  display: flex;
+  flex-direction: column;
+  min-width: 7rem;
+  justify-content: center;
+}
+.Navbar__btn span {
+  margin-top: .4rem;
+  font-size: var(--font-xs);
+}
+.Navbar__searchContent {
+  width: 100vw;
+  height: calc(100vh - 6rem);
+  position: absolute;
+  top: 0;
+  background: var(--dark-blue-opacity);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  transition: .6s all ease;
+  transform: translate(0, -100%);
+  z-index: 20;
+}
+.Navbar__searchContent.isOpen {
+  transform: translate(0, 0);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
